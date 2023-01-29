@@ -4,10 +4,10 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import Paper from '@mui/material/Paper';
-import TableHeader from '../Common/TableHeader';
+import TableHeader from '../common/TableHeader';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { totalRewardPoints } from '../Utils/DataSet';
+import { totalRewardPoints } from '../utils/DataSet';
 import { styled } from '@mui/material/styles';
 
 export type Props = {
@@ -25,7 +25,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
 }));
 const RewardTable: React.FC<Props> = ({ rows, headers }) => {
-    console.log(rows)
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 

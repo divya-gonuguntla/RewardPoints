@@ -4,8 +4,8 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import Paper from '@mui/material/Paper';
-import TableHeader from '../Common/TableHeader';
-import { customerRewardsInfo } from '../Utils/DataSet';
+import TableHeader from '../common/TableHeader';
+import { customerRewardsInfo } from '../utils/DataSet';
 import Row from './Row';
 
 export type Props = {
@@ -17,10 +17,9 @@ export type Props = {
 }
 
 const RewardTable: React.FC<Props> = ({ rows, headers, isSubComponentAvailable, subTableHeader, subTableLabels }) => {
-    console.log(rows)
+
     const filteredRows = rows.filter(elm => elm)
     const flattenedRows = filteredRows.flat()
-    console.log(flattenedRows);
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -40,7 +39,7 @@ const RewardTable: React.FC<Props> = ({ rows, headers, isSubComponentAvailable, 
                     <TableBody>
                         {flattenedRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
                             <>
-                                <Row key={row.name} row={row}
+                                <Row row={row}
                                     isSubComponentAvailable={isSubComponentAvailable}
                                     subTableHeader={subTableHeader}
                                     subTableLabels={subTableLabels} />

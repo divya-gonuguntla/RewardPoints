@@ -10,8 +10,8 @@ import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { styled } from '@mui/material/styles';
-import { customerRewardsInfo } from '../Utils/DataSet';
-import TableHeader from '../Common/TableHeader';
+import { customerRewardsInfo } from '../utils/DataSet';
+import TableHeader from '../common/TableHeader';
 
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -36,14 +36,13 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 export type Props = {
-    key: string,
     row: customerRewardsInfo
     isSubComponentAvailable?: boolean,
     subTableHeader: string,
     subTableLabels: string[]
 }
 
-const Row: React.FC<Props> = ({ key, row, isSubComponentAvailable, subTableHeader, subTableLabels
+const Row: React.FC<Props> = ({ row, isSubComponentAvailable, subTableHeader, subTableLabels
 }) => {
     const historyElem = row.history.filter(elem => elem)
     const [open, setOpen] = React.useState(false);

@@ -1,11 +1,11 @@
 export let CustomerData =
     [
-        createData(120, 1, "John Smith", "05-01-2019"),
-        createData(75, 1, "John Smith", "05-21-2019"),
-        createData(94, 1, "John Smith", "05-21-2019"),
-        createData(10, 1, "John Smith", "06-01-2019"),
-        createData(75, 1, "John Smith", "06-21-2019"),
-        createData(200, 1,"John Smith",  "07-01-2019"),
+        createData(120, 1, "John Smith", "05-01-2019 09:00:10 AM"),
+        createData(75, 1, "John Smith", "05-21-2019 11:00:10 AM"),
+        createData(94, 1, "John Smith", "05-21-2019 09:30:40 AM"),
+        createData(10, 1, "John Smith", "06-01-2019 14:05:10 AM"),
+        createData(75, 1, "John Smith", "06-21-2019 05:07:10 AM"),
+        createData(200, 1,"John Smith",  "07-01-2019 "),
         createData(1, 1,"John Smith","07-04-2019" ),
         createData(80,1,"John Smith", "07-03-2019"),
         createData(224, 1, "John Smith", "07-21-2019"),

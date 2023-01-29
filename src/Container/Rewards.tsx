@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { CustomerData, customerInfo, customerRewardsInfo } from '../Utils/DataSet';
+import { CustomerData, customerInfo, customerRewardsInfo } from '../utils/DataSet';
 import {
     MONTHS, HEADER_ROW_NAMES,
     HISTORY_HEADER_ROW_NAMES,
     CUSTOMER_AGGREGATE_TABLE_HEADERS,
     CUSTOMER_REWARDS_BY_MONTH_TITLE,
     CUSTOMER_REWARDS_TITLE
-} from '../Utils/Constants';
-import RewardTable from '../Component/Table';
+} from '../utils/Constants';
+import RewardTable from '../component/RewardsByMonthTable';
 import Box from '@mui/material/Box';
-import TotalRewardsByCustomer from '../Component/TotalRewardsByCustomer';
+import TotalRewardsByCustomer from '../component/TotalRewardsByCustomer';
 import Typography from '@mui/material/Typography';
 
 const Rewards: React.FC = () => {
@@ -65,7 +65,6 @@ const Rewards: React.FC = () => {
                 }
             }
         });
-
         setTransactionResultData(Object.values(groupDataByCustomer));
         const totalCustomerInfo = Object.values(groupDataByCustomer).flat()
 
@@ -89,6 +88,7 @@ const Rewards: React.FC = () => {
     useEffect(() => {
         calculateRewards([...CustomerData]);
     }, []);
+   
     return (
         <div className="container">
             <div className="row">
