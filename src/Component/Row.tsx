@@ -17,7 +17,7 @@ import TableHeader from '../Common/TableHeader';
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.action.hover,
-        
+
     },
     '&:last-child td, &:last-child th': {
         border: 0,
@@ -50,7 +50,7 @@ const Row: React.FC<Props> = ({ key, row, isSubComponentAvailable, subTableHeade
     return (
         <React.Fragment>
             <StyledTableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-                <TableCell  padding="none">
+                <TableCell padding="none">
                     <IconButton
                         aria-label="expand row"
                         size="small"
@@ -60,7 +60,7 @@ const Row: React.FC<Props> = ({ key, row, isSubComponentAvailable, subTableHeade
                     </IconButton>
                 </TableCell>
                 <StyledTableCell align="center" padding="none">{row.name}</StyledTableCell>
-                <StyledTableCell align="center"  padding="none">{row.numOfTransactions}</StyledTableCell>
+                <StyledTableCell align="center" padding="none">{row.numOfTransactions}</StyledTableCell>
                 <StyledTableCell align="center" padding="none">{row.month}</StyledTableCell>
                 <StyledTableCell align="center" padding="none">{row.points}</StyledTableCell>
             </StyledTableRow>
@@ -68,15 +68,17 @@ const Row: React.FC<Props> = ({ key, row, isSubComponentAvailable, subTableHeade
                 {isSubComponentAvailable ? <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ margin: 1 }}>
-                            <Typography variant="body2" gutterBottom component="div">
-                                {subTableHeader}
-                            </Typography>
+                            <Box display="flex" justifyContent="center" flexWrap="wrap">
+                                <Typography variant="body2" gutterBottom component="div">
+                                    {subTableHeader}
+                                </Typography>
+                            </Box>
                             <Table size="small" aria-label="purchases">
                                 <TableHeader headers={subTableLabels} emptyHeader={false} />
                                 <TableBody>
                                     {historyElem.map((historyRow) => (
                                         <TableRow key={historyRow.transactionDate as string}>
-                                            <StyledTableCell component="th" scope="row">
+                                            <StyledTableCell component="th" scope="row" align="center">
                                                 {historyRow.transactionDate}
                                             </StyledTableCell>
                                             <StyledTableCell align="center">{historyRow.amount}</StyledTableCell>

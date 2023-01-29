@@ -29,7 +29,7 @@ const RewardTable: React.FC<Props> = ({ rows, headers, isSubComponentAvailable, 
     };
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setRowsPerPage(+parseInt(event.target.value, 5));
+        setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
     return (
@@ -51,7 +51,7 @@ const RewardTable: React.FC<Props> = ({ rows, headers, isSubComponentAvailable, 
             </TableContainer>
 
             <TablePagination
-                rowsPerPageOptions={[5, 10, 15, 100]}
+                rowsPerPageOptions={[5, 10, 25, 50]}
                 component="div"
                 count={flattenedRows.length}
                 rowsPerPage={rowsPerPage}
