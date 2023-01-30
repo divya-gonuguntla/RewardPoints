@@ -1,24 +1,28 @@
 export let CustomerData =
     [
-        createData(120, 1, "John Smith", "05-01-2019 09:00:10 AM"),
-        createData(75, 1, "John Smith", "05-21-2019 11:00:10 AM"),
-        createData(94, 1, "John Smith", "05-21-2019 09:30:40 AM"),
-        createData(10, 1, "John Smith", "06-01-2019 14:05:10 AM"),
-        createData(75, 1, "John Smith", "06-21-2019 05:07:10 AM"),
-        createData(200, 1,"John Smith",  "07-01-2019 "),
-        createData(1, 1,"John Smith","07-04-2019" ),
-        createData(80,1,"John Smith", "07-03-2019"),
-        createData(224, 1, "John Smith", "07-21-2019"),
-        createData(125, 2, "Krishna", "05-01-2019"),
-        createData( 75, 2,"Krishna","05-21-2019"),
-        createData( 10, 2, "Krishna","06-01-2019"),
-        createData( 75, 2, "Krishna", "06-21-2019"),
-        createData(200, 2, "Krishna", "07-01-2019"),
-        createData(224, 2, "Krishna", "07-21-2019"),
-        createData(120, 3, "Tejas LLC", "06-21-2019"),
-        createData(150, 3,"Tejas LLC", "06-27-2019"),
-        createData( 90, 3,"Tejas LLC", "07-27-2019")
+        createData(120, 1, "John Smith", "01-05-2023 09:00:10 AM"),
+        createData(75, 1, "John Smith", "01-14-2023 11:00:22 AM"),
+        createData(94, 1, "John Smith", "12-01-2022 12:30:40 PM"),
+        createData(10, 1, "John Smith", "12-14-2022 02:05:58 PM"),
+        createData(75, 1, "John Smith", "12-21-2022 04:07:12 PM"),
+        createData(200, 2, "Lucky", "11-01-2022 10:07:44 AM"),
+        createData(1, 2, "Lucky", "11-09-2023 06:19:07 PM"),
+        createData(80, 2, "Lucky", "11-11-2022 07:08:10 PM"),
+        createData(224, 2, "Lucky", "11-27-2022 08:06:16 PM"),
+        createData(125, 3, "Krishna", "01-07-2023 08:30:35 AM"),
+        createData(75, 3, "Krishna", "12-01-2022 10:07:05 AM"),
+        createData(10, 4, "Raj", "12-19-2022 12:07:16 PM"),
+        createData(75, 4, "Raj", "11-21-2022 01:07:28 PM"),
+        createData(200, 5, "Pete", "11-26-2022 04:07:19 PM"),
+        createData(224, 5, "Pete", "11-28-2022 02:25:25 PM"),
+        createData(120, 6, "Tejas LLC", "01-21-2023 10:07:55 AM"),
+        createData(150, 6, "Tejas LLC", "12-24-2022 11:07:29 AM"),
+        createData(90, 6, "Tejas LLC", "11-22-2022 04:07:39 PM")
     ] as const
+
+export function getData() {
+    return Promise.resolve([...CustomerData])
+}
 
 export type historyObj = {
     transactionDate: string,
@@ -42,7 +46,7 @@ export type customerInfo = {
 }
 
 export type customerRewardsInfo = {
-    amount: number,
+
     customerId: number,
     month: string,
     monthNumber: number,

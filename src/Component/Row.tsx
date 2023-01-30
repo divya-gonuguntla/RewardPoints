@@ -67,11 +67,9 @@ const Row: React.FC<Props> = ({ row, isSubComponentAvailable, subTableHeader, su
                 {isSubComponentAvailable ? <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ margin: 1 }}>
-                            <Box display="flex" justifyContent="center" flexWrap="wrap">
-                                <Typography variant="body2" gutterBottom component="div">
-                                    {subTableHeader}
-                                </Typography>
-                            </Box>
+                            <Typography variant="body2" gutterBottom component="div">
+                                {subTableHeader}
+                            </Typography>
                             <Table size="small" aria-label="purchases">
                                 <TableHeader headers={subTableLabels} emptyHeader={false} />
                                 <TableBody>

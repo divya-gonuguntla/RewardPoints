@@ -42,9 +42,9 @@ const RewardTable: React.FC<Props> = ({ rows, headers }) => {
                 <Table sx={{ minWidth: 400 }} aria-label="customized table" >
                     <TableHeader headers={headers} emptyHeader={false} />
                     <TableBody>
-                        {rows.map((row) => {
+                        {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                             return <TableRow key={row.customerId}>
-                                <StyledTableCell align="center" padding="none">{row.name}</StyledTableCell>
+                                <StyledTableCell sx={{ padding: 1 }}  align="center" padding="none">{row.name}</StyledTableCell>
                                 <StyledTableCell align="center" padding="none">{row.rewardPoints}</StyledTableCell>
                             </TableRow>
                         }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CustomerData, customerInfo, customerRewardsInfo } from '../utils/DataSet';
+import { CustomerData, customerInfo, customerRewardsInfo, getData } from '../utils/DataSet';
 import {
     MONTHS, HEADER_ROW_NAMES,
     HISTORY_HEADER_ROW_NAMES,
@@ -11,9 +11,11 @@ import RewardTable from '../component/RewardsByMonthTable';
 import Box from '@mui/material/Box';
 import TotalRewardsByCustomer from '../component/TotalRewardsByCustomer';
 import Typography from '@mui/material/Typography';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Rewards: React.FC = () => {
     const [resultData, setTransactionResultData] = useState<customerRewardsInfo[]>([]);
+    const [apiData, setApiData] = useState<customerInfo[]>()
     const [totalRewardsPerCust, setTotalRewardsPerCust] = useState<any>([])
     const getRewardPoints = (amount: number) => {
         let points = 0;
@@ -85,35 +87,47 @@ const Rewards: React.FC = () => {
         return groupDataByCustomer
     }
 
+    // useEffect(() => {
+    //     calculateRewards([...CustomerData]);
+    // }, []);
     useEffect(() => {
-        calculateRewards([...CustomerData]);
+        const doGetUsers = async () => {
+            const result = await getData();
+            setApiData(result);
+            calculateRewards(result);
+        };
+        doGetUsers();
     }, []);
-   
+
     return (
         <div className="container">
-            <div className="row">
-                <Box pt={4} ml={2} mr={8}>
-                    <Typography variant="h5">{CUSTOMER_REWARDS_BY_MONTH_TITLE}</Typography>
-                </Box>
+            {!apiData ? <CircularProgress/> :
+                <>
+                    <div className="row">
+                        <Box pt={4} ml={2} mr={8}>
+                            <Typography variant="h5">{CUSTOMER_REWARDS_BY_MONTH_TITLE}</Typography>
+                        </Box>
 
-                <Box p={4} ml={4} mr={8} >
-                    <RewardTable rows={resultData}
-                        headers={HEADER_ROW_NAMES}
-                        isSubComponentAvailable={true}
-                        subTableHeader={"Transaction History"}
-                        subTableLabels={HISTORY_HEADER_ROW_NAMES}
-                    ></RewardTable>
-                </Box>
-            </div>
+                        <Box p={2} ml={4} mr={8} >
+                            <RewardTable rows={resultData}
+                                headers={HEADER_ROW_NAMES}
+                                isSubComponentAvailable={true}
+                                subTableHeader={"Transaction History"}
+                                subTableLabels={HISTORY_HEADER_ROW_NAMES}
+                            ></RewardTable>
+                        </Box>
+                    </div>
 
-            <Box pt={1} ml={2} mr={8}>
-                <Typography variant="h5">{CUSTOMER_REWARDS_TITLE}</Typography>
-            </Box>
-            <Box p={4} ml={4} mr={8}>
-                <TotalRewardsByCustomer rows={totalRewardsPerCust}
-                    headers={CUSTOMER_AGGREGATE_TABLE_HEADERS}
-                ></TotalRewardsByCustomer>
-            </Box>
+                    <Box pt={1} ml={2} mr={8}>
+                        <Typography variant="h5">{CUSTOMER_REWARDS_TITLE}</Typography>
+                    </Box>
+                    <Box p={2} ml={4} mr={8}>
+                        <TotalRewardsByCustomer rows={totalRewardsPerCust}
+                            headers={CUSTOMER_AGGREGATE_TABLE_HEADERS}
+                        ></TotalRewardsByCustomer>
+                    </Box>
+                </>
+            }
         </div>)
 }
 
